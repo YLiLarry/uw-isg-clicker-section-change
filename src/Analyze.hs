@@ -37,8 +37,8 @@ sanityCheck [a] = return ()
 sanityCheck (a:b:rest)
    | (toSection a) == (fromSection b) = sanityCheck (b:rest)
    | otherwise = do 
-         tell $ printf ("Student %s transferred from section %s to section %s, \n" ++
-                        "but the next email says s/he transferred from %s, \n" ++
+         tell $ printf ("Error: Student %s transferred from section %s to section %s, " ++
+                        "but the next email says s/he transferred from %s, " ++
                         "indicating there might be an email missing in between.\n")
                   qid from to fromb
          sanityCheck (b:rest)
